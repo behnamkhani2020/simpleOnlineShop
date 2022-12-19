@@ -52,9 +52,8 @@ const post = async (req,res) =>{
     const renderdHtml = await ejs.renderFile(path.join(__dirname,'../views/layout/emailTemplate.ejs'),{
         title:'hello there',
         description:`here is your reset password link`,
-        link : `http://localhost:4000/reset?token=${token}`
+        link : `http://localhost:${process.env.PORT}/reset?token=${token}`
     })
-
     // send mail to user
     const info = await sendMail(userInfo.email,renderdHtml)
     req.flash('info','reset instructions sent successfully')
