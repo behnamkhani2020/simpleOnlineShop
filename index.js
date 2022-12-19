@@ -29,8 +29,9 @@ app.use(express.urlencoded({
 }))
 const envPath = path.join(__dirname,'variables.env')
 dotenv.config({path:envPath})
+
 // using passport
-require('./src/utils/passportConfig')
+require('./src/configs/passportConfig')
 //
 
 // using passport session
@@ -50,4 +51,4 @@ app.use((err,req,res,next)=>{
 })
 
 //start the app
-app.listen(3000,()=>{console.log('express listening at port 3000')})
+app.listen(process.env.PORT,()=>{console.log('express listening at port ' + process.env.PORT)})
