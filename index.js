@@ -9,6 +9,7 @@ const logger = require('morgan')
 const passport = require('passport')
 const dotenv = require('dotenv')
 const routesHandler = require('./routes/routesHandler')
+const Cart = require('./src/utils/Cart')
 
 // app configuraton
 app.set('views','./views')
@@ -32,7 +33,6 @@ dotenv.config({path:envPath})
 
 // using passport
 require('./src/configs/passportConfig')
-//
 
 // using passport session
 app.use(passport.initialize())

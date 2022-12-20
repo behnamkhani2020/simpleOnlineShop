@@ -16,6 +16,7 @@ passport.use(new LocalStrategy({
        try {
            if (!user) { return done(null, false , {message:' incorrect email '}); }
            if (! await User.verifyPassword(user,password)) { return done(null, false, { message : ' incorrect password '}); }
+           user.cart = []
            return done(null,user)
        } catch (error) {
            done(error);

@@ -8,14 +8,22 @@ const {loggedIn,notLoggedIn} = require('../src/utils/loggedIn.js')
 const forgetController = require('../controllers/forgetController')
 const resetController = require('../controllers/resetController')
 const logoutController = require('../controllers/logoutController')
+const categoryController = require('../controllers/categoryController')
+const singleProductController = require('../controllers/singleProductController')
+const addToCartController = require('../controllers/addToCartController')
 
 
 // homepage routes
-
 router.get('/',homepageController)
 
-// authentication routes
+// category routes
+router.get('/category/:id',categoryController)
 
+// product routes
+router.get('/shop-single/:id',singleProductController)
+router.get('/addToCart/:id',notLoggedIn,addToCartController)
+
+// authentication routes
 router.get('/signup',signupController.get)
 router.post('/signup',body('userName').not().isEmpty(),
                 body('userEmail').isEmail(),

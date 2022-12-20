@@ -39,8 +39,7 @@ const post = async (req,res) =>{
     }
     
     //generate Token
-    const token = await md5(userInfo.email) + Date.now()
-    console.log(token)
+    const token = md5(userInfo.email) + Date.now()
     await User.update({
         token:token
     },{
@@ -55,8 +54,8 @@ const post = async (req,res) =>{
         link : `http://localhost:${process.env.PORT}/reset?token=${token}`
     })
     // send mail to user
-    const info = await sendMail(userInfo.email,renderdHtml)
-    req.flash('info','reset instructions sent successfully')
+    sendMail(userInfo.email,renderdHtml)
+    req.flash('info','reset instructions sent successfully, you may view link at console !!')
     res.render('forget',{
         flashMessage : req.flash(),
         errors : []

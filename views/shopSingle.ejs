@@ -1,0 +1,43 @@
+
+<%- include('layout/header.ejs')  %> 
+
+<%- include('layout/modal.ejs')  %> 
+
+<!-- Start Products -->
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row py-3">
+            <div class="col-lg-3 m-auto">
+                <img class = "w-100" src="/images/sampleImage.png" alt="..no..image..">
+                <h1 class="h1"> Name : <%= product.name %>  </h1>
+                <p> About : 
+                    <%= product.about %>     
+                </p>
+                <p> Price :
+                    <%= product.price %> 
+                </p>
+                <p> Category :
+                    <%= product.category.name %> 
+                </p>
+                <p> Date of birth : 
+                    <%= product.dob %> 
+                </p>
+            </div>
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1"> add to cart : <%= product.name %>  </h1>
+                <% if (alreadyExists) { %>
+                    <a href="/addToCart/<%= product.id %> " class="btn btn-primary form-control disabled">Product is in your cart !!</a>
+                <% }else{ %>
+                    <a href="/addToCart/<%= product.id %> " class="btn btn-primary form-control">ADD</a>
+                <% } %> 
+            </div>
+
+        </div>
+        
+        
+    </div>
+</section>
+<!-- End Products -->
+
+
+<%- include('layout/footer.ejs')  %> 

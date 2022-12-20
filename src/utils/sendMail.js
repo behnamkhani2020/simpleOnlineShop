@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer')
 
-const sendMail = async (email,renderdHtml)=>{
-    await nodemailer.createTestAccount(async(err, account) => {
+const sendMail = (email,renderdHtml)=>{
+    
+    nodemailer.createTestAccount((err, account) => {
         if (err) {
             console.error('Failed to create a testing account. ' + err.message);
             return process.exit(1);
@@ -10,7 +11,7 @@ const sendMail = async (email,renderdHtml)=>{
         console.log('Credentials obtained, sending message...');
     
         // Create a SMTP transporter object
-        const transporter = await nodemailer.createTransport({
+        const transporter = nodemailer.createTransport({
             host: process.env.mailHost,
             port: process.env.mailPort,
             auth: {
@@ -27,7 +28,7 @@ const sendMail = async (email,renderdHtml)=>{
             html: renderdHtml
         };
     
-        await transporter.sendMail(message, (err, info) => {
+        transporter.sendMail(message, (err, info) => {
             if (err) {
                 console.log('Error occurred. ' + err.message);
                 return process.exit(1);
@@ -38,6 +39,7 @@ const sendMail = async (email,renderdHtml)=>{
             console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
         });
     });
+    
 }
 
 module.exports = sendMail

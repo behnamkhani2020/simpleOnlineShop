@@ -44,7 +44,6 @@ const post = async (req,res) =>{
     // check for validation error
     const result = validationResult(req)
     const userInfo = req.query
-    console.log(userInfo)
     if(!result.isEmpty()){
         res.render('reset',{
             flashMessage : req.flash(),
@@ -71,7 +70,6 @@ const post = async (req,res) =>{
     
     //clear Token
     const token = Date.now()
-    console.log(token)
     const encPass = await User.encryptPassword(req.body.newPass)
     await User.update({
         token:token,
@@ -81,12 +79,8 @@ const post = async (req,res) =>{
             token : userInfo.token
         }
     })
-
     req.flash('info','reset password was successfull')
-    res.render('login',{
-        flashMessage : req.flash(),
-        errors : [],
-    })
+    res.redirect('/login')
 }
 module.exports = {
     get,
