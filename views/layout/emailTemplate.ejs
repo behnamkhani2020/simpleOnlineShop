@@ -15,9 +15,15 @@
         <div class="card-body">
             <p><%= description %> </p>
         </div>
+        <div class="card-footer">
+            <% if (price !== null) { %>
+                total amout : <a href="#"><%= price %> </a> dollars
+            <% } %>
+        </div>
         <% if (link.length !== 0) { %>
-         <a href="<%= link %>" class="btn btn-block">click here</a>
+         <a href="<%= link %>">click here</a>
         <% } %>
+        
     </div>
 </body>
 </html>

@@ -5,7 +5,6 @@ const addToCartController = (req,res)=>{
     }else{
         req.session.cart.push(Number(id))
     }
-    console.log(req.session)
     res.redirect('/')
 }
 

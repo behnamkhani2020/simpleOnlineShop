@@ -1,0 +1,56 @@
+
+<%- include('layout/header.ejs')  %> 
+
+<!-- Start Products -->
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row">
+            <h2 class="w-100 text-center">HERE IS YOUR CART, ready to checkout ??</h2>
+            <% if (products.length === 0) { %>
+                <div class="alert alert-danger mx-2">
+                    <strong>Oops!</strong> You need to add some products to see cart<br/>
+                    <p>You may do this by clicking a product picture and clicking add in products page</p>
+                </div>
+            <% } %>
+            <% products.forEach(product => { %>
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="card h-100">
+                        <a href="/shop-single/<%= product.id %> ">
+                            <img src="/images/sampleImage.png" class="card-img-top" alt="..not..found..">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    Price : 
+                                </li>
+                                <li class="text-right">$<%= product.price %> </li>
+                            </ul>
+                            <a href="/shop-single/<%= product.id %>" class="h2 text-decoration-none text-dark"><%= product.name %> </a>
+                            <p class="card-text">
+                                <%= product.about.substr(0,30) + '...' %> 
+                            </p>
+                            <p class="text-secondary"> Category : 
+                            <a href="/category/<%= product.category.id %> ">
+                                <%= product.category.name %>
+                            </a>
+                         </p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            <hr>
+            <br/>
+            <% for (key in flashMessage) {%> <div class="alert alert-warning"><%= flashMessage[key] %> </div>  <%} %>
+            <form action="/checkout" method="POST">
+                <div class="input-gruop fs-1 d-flex justify-content-between">
+                    <input type="hidden" name="totalPrice" value="<%= totalPrice %> ">
+                    total price is <%= totalPrice %> <button type="submit" class="btn btn-primary fs-3" >Check out</button> 
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- End Products -->
+
+
+<%- include('layout/footer.ejs')  %> 

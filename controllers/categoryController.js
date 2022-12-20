@@ -11,7 +11,6 @@ const categoryController = async (req,res)=>{
         }
     })
     const theOffset = (Math.ceil(count/10))*page
-    console.log((Math.ceil(count/10))*page)
     const allProducts = await Product.findAll({
         where:{
             category_ID : Number(id)
