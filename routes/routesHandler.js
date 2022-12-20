@@ -12,6 +12,7 @@ const categoryController = require('../controllers/categoryController')
 const singleProductController = require('../controllers/singleProductController')
 const addToCartController = require('../controllers/addToCartController')
 const checkoutController = require('../controllers/checkoutController')
+const removeFromCartController = require('../controllers/removeFromCartController')
 
 
 // homepage routes
@@ -23,8 +24,10 @@ router.get('/category/:id',categoryController)
 // product routes
 router.get('/shop-single/:id',singleProductController)
 router.get('/addToCart/:id',notLoggedIn,addToCartController)
+router.get('/removeFromCart/:id',notLoggedIn,removeFromCartController)
 router.get('/checkout',notLoggedIn,checkoutController.get)
 router.post('/checkout',notLoggedIn,checkoutController.post)
+
 
 // authentication routes
 router.get('/signup',signupController.get)

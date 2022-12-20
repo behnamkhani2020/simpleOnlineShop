@@ -25,6 +25,7 @@
                 <h1 class="h1"> add to cart : <%= product.name %>  </h1>
                 <% if (alreadyExists) { %>
                     <a href="/addToCart/<%= product.id %> " class="btn btn-primary form-control disabled">Product is in your cart !!</a>
+                    <a href="/removeFromCart/<%= product.id %> " class="btn btn-danger form-control">remove Product from your cart !!</a>
                 <% }else{ %>
                     <a href="/addToCart/<%= product.id %> " class="btn btn-primary form-control">ADD</a>
                 <% } %> 

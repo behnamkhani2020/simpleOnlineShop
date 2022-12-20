@@ -18,3 +18,5 @@ login to see cart and click on product to add it to cart and click check out but
 
 ENV
 variable.env at root folder contains PORT and MAILING info for running app and sending mails
+
+https://github.com/behnamkhani2020/simpleOnlineShop.git
