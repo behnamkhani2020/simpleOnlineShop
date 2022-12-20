@@ -4,6 +4,7 @@
   "description": "maktabkhone project",
   "main": "index.js",
   "scripts": {
+    "test0": "clear;node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

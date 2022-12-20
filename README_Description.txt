@@ -2,8 +2,9 @@ SIMPLE ONLINE SHOP
 
 USE BELOW STEPS TO RUN APP
 
+import simpleOnlineShop.sql in your database
 npm install >> for installing requird packages
-npm run test >> runs the APP
+npm run test0 >> runs the APP
 
 MAILING info
 
