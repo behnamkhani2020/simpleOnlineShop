@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 20, 2022 at 11:12 AM
+-- Host: 127.0.0.1
+-- Generation Time: Jan 14, 2023 at 09:32 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `simpleOnlineShop`
+-- Database: `simpleonlineshop`
 --
 
 -- --------------------------------------------------------
@@ -181,18 +181,16 @@ CREATE TABLE `users` (
   `name` varchar(63) NOT NULL,
   `email` text NOT NULL,
   `password` text NOT NULL,
-  `token` text NOT NULL
+  `token` text NOT NULL,
+  `cart` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `token`) VALUES
-(1, 'behnam', 'bm.khani2020@gmail.com', '$2b$10$tMBdJzjT3o/L2tEHLV1zmuyFn6K/XGlDRdpdDE/BXpr/mlVDUMZwC', '1671470810676'),
-(2, 'sojuzy', 'hogynovyc@mailinator.com', '$2b$10$dABA/GMAfa7/KxaPtX/3bO5gg6DtBAGqhPCWLNwii.IorUENGFHT6', '-'),
-(3, 'cezinesok', 'aa@aa.com', '$2b$10$CRHeCXp25bBiHrMyHmICju/jvPxUcMY/kG/qZAULvv0faoR9C7YDq', '1671475920786'),
-(4, 'aass', 'aass@mailinator.com', '$2b$10$flFEPlO/wnSNfJZ/11QK/.L5V2lbh9ZaS02V3M7K1NAhRo7inhUTu', '-');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `token`, `cart`) VALUES
+(8, 'behnam', 'aass@aass.com', '$2b$10$F6N5JJf07F3voBHeATrD/.W3jlC08AEdM4QWfk.otAwQ6swCQBCV.', '-', '[]');
 
 --
 -- Indexes for dumped tables
@@ -236,7 +234,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(31) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(31) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

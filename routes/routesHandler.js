@@ -41,6 +41,6 @@ router.get('/forget',loggedIn,forgetController.get)
 router.post('/forget',body('email').isEmail(),forgetController.post)
 router.get('/reset',loggedIn,resetController.get)
 router.post('/reset',body('newPass').isLength({min:5}),resetController.post)
-router.get('/logout',logoutController)
+router.get('/logout',notLoggedIn,logoutController)
 
 module.exports = router

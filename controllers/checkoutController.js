@@ -1,5 +1,6 @@
 const Category = require('../models/Category')
 const Product = require('../models/Product')
+const User = require('../models/User')
 const ejs = require('ejs')
 const path = require('path')
 const sendMail = require('../src/utils/sendMail')
@@ -46,6 +47,16 @@ const post = async (req,res)=>{
     console.log(req.session)
     sendMail(req.user.email,renderdHtml)
     req.flash('info','Biling info sent successfully, you may view link at console !!')
+    req.session.cart = []
+    fetchedProducts = []
+    totalPrice = 0
+    await User.update({
+        cart : JSON.stringify(req.session.cart)
+    },{
+        where:{
+            id : req.user.id
+        }
+    })
     res.render('checkout',{
         categories : categories,
         products : fetchedProducts,

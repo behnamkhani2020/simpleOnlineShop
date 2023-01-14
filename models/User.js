@@ -21,6 +21,10 @@ const User = db.define('users',{
     token:{
         type : DataTypes.STRING,
         defaultValue:'-'
+    },
+    cart:{
+        type : DataTypes.STRING,
+        defaultValue : JSON.stringify('')
     }
 },{
     timestamps : false

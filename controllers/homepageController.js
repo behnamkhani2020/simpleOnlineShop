@@ -3,8 +3,12 @@ const Product = require('../models/Product')
 
 const homepageController = async (req,res)=>{
     if(req.user){
-        req.session.cart = req.session.cart || []
+        if(!req.session.cart){
+            console.log(req.user.cart)
+            req.session.cart = JSON.parse(req.user.cart) || []
+        }
     }
+    console.log(req.session.cart)
     const page = req.query.page || 0
     const categories = await Category.findAll()
     const count = await Product.count()
