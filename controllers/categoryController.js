@@ -23,7 +23,8 @@ const categoryController = async (req,res)=>{
         categories : categories,
         products : allProducts,
         user : req.user,
-        productCount : count
+        productCount : count,
+        cart : req.session.cart || []
     })
 }
 
