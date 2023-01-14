@@ -51,12 +51,13 @@ const post = async (req,res) =>{
     const renderdHtml = await ejs.renderFile(path.join(__dirname,'../views/layout/emailTemplate.ejs'),{
         title:'hello there',
         description:`here is your reset password link`,
-        link : `http://localhost:${process.env.PORT}/reset?token=${token}`
+        link : `http://localhost:${process.env.PORT}/reset?token=${token}`,
+        price : null
     })
     // send mail to user
     sendMail(userInfo.email,renderdHtml)
     req.flash('info','reset instructions sent successfully, you may view link at console !!')
-    res.render('forget',{
+    res.render('login',{
         flashMessage : req.flash(),
         errors : []
     })
